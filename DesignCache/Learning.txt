@@ -1,0 +1,8 @@
+Single Responsibility Principle
+Interface Segregation Principle
+Dependency Inversion
+
+Open/Close Principle can be applied.
+
+Liskov Substitution Principle??
+
