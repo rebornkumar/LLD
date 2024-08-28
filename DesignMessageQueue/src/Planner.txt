@@ -1,0 +1,117 @@
+
+
+We have to design a message queue supporting publisher-subscriber model. It should support following operations:
+
+It should support multiple topics where messages can be published.
+Publisher should be able to publish a message to a particular topic.
+Subscribers should be able to subscribe to a topic.
+Whenever a message is published to a topic, all the subscribers, who are subscribed to that topic,
+should receive the message.
+Subscribers should be able to run in parallel
+
+Model :
+    Publisher
+    Queue/Broker
+        Topic
+            List<Message>messages
+            List<Subscriber>subscribers
+    Subscriber
+        id
+        name
+
+
+Which model to follow. Push or Pull?
+
+Behavioral DP : Observer Patten
+
+Subscriber is similar consumer-group in kafka
+Point to Point vs BroadCasting --> BroadCasting
+Maintain offset for each Subscriber.
+
+Pull vs Push Model : Need design flexibility here
+    Apply SOLID principles for flexibility and maintainability
+    Dependency Injection
+
+What are the challenges in low-level design
+
+    How do handle requirement changes with minimal efforts
+    As code-base grow these will get complicated how to manage them.
+
+Let's follow KISS and DRY and OOPS and SOLID principles for basic start.
+
+Publisher
+    publish()
+Broker/Queue
+    store()
+    push()
+    poll()
+    subscribe()
+    createTopic()
+
+Topic
+    id
+    name
+    List<Message>messages
+    //in violation with SRP
+    Map<Consumer,Integer>consumerOffset
+
+IMessage(Abstract or Interface) : TextMessage , MimeMessage, CryptoMessage
+using abstraction class gives the flexibility.
+Hide the details
+    getMessageContent()
+    getMessageKey()
+    getTopic()
+
+
+Next considering this single server setup. Actually In-memory setup. haha
+
+Analysing this relationship between message and topic.
+
+topic ->* Messages   || to hold messages | persistence
+
+
+topic ->* Subscribers || to deliver messages and acknowledgement
+
+which should be where?
+is subscribers list part of topic??
+is message list part of topics
+
+messages are immutable here. its a design choice.
+
+
+subscriber come and go all the time how you plan to manage that.
+
+
+does it matter if its push or poll?
+push --> sch(trigger) --> queue -> sub -> queue(ack)
+poll --> sub(ask) --> queue --> sub --> queue(ack)
+
+
+
+message delivery record : or subscriber offset -->
+maintaining this offset is a requirement.
+
+suppose in future you are required to implement retry mechanism for max- 3 retry
+
+
+service
+    publish
+    persist
+    delivery
+
+
+you are lost now !!!
+
+don't go for implementation
+only structure and thought process matters here.
+
+will revisit this again
+
+
+
+
+
+
+
+
+
