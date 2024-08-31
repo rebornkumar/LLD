@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DesignCache/DesignCache.iml" filepath="$PROJECT_DIR$/DesignCache/DesignCache.iml" />
       <module fileurl="file://$PROJECT_DIR$/DesignMessageQueue/DesignMessageQueue.iml" filepath="$PROJECT_DIR$/DesignMessageQueue/DesignMessageQueue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DesignPubSub/DesignPubSub.iml" filepath="$PROJECT_DIR$/DesignPubSub/DesignPubSub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DesignRobot/DesignRobot.iml" filepath="$PROJECT_DIR$/DesignRobot/DesignRobot.iml" />
       <module fileurl="file://$PROJECT_DIR$/DynamicFairPricingSystem/DynamicFairPricingSystem.iml" filepath="$PROJECT_DIR$/DynamicFairPricingSystem/DynamicFairPricingSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/LLD.iml" filepath="$PROJECT_DIR$/.idea/LLD.iml" />
     </modules>
